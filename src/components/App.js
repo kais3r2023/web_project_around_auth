@@ -113,10 +113,10 @@ function App() {
 
         <Header 
           signText={"Cerrar sesión"}
-          emailLogin={"luisgtm23@hotmail.com"}
+          emailLogin={"danielcanalestaylor@hotmail.com"}
         />
-        <Register/>
-        {/* <Main
+        
+        <Main
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onEditAvatarClick={handleEditAvatarClick}
@@ -152,7 +152,7 @@ function App() {
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
-        <Footer /> */}
+        <Footer />
       </CurrentUserContext.Provider>
     </div>
   );

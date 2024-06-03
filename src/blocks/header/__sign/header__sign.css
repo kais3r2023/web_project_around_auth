@@ -8,6 +8,8 @@
   border: none;
   outline: none;
   background-color: transparent;
+  justify-self: right;
+  
 }
 
 .header__sign:hover {
