@@ -1,3 +1,5 @@
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -9,7 +11,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import Login from "./Login";
 import Register from "./Register";
-
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   // Carga de States
@@ -20,6 +22,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
 
   //Llamada de datos de Usuario de la Api
   useEffect(() => {
@@ -110,48 +113,55 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route element={<ProtectedRoute loggedIn={isLogged}/>}>
+            <Route 
+              path="/"
+              element={
+                <>
+                  <Header
+                    signText={"Cerrar sesión"}
+                    emailLogin={"danielcanalestaylor@hotmail.com"}
+                  />
+                  <Main
+                    onEditProfileClick={handleEditProfileClick}
+                    onAddPlaceClick={handleAddPlaceClick}
+                    onEditAvatarClick={handleEditAvatarClick}
+                    onConfirmationClick={handleConfirmationClick}
+                    onCardClick={handlerCardClick}
+                    onCardLike={handleCardLike}
+                    onCardDelete={handleCardDelete}
+                    isOpen={[
+                      isEditProfilePopupOpen,
+                      isAddPlacePopupOpen,
+                      isEditAvatarPopupOpen,
+                      isConfirmationPopupOpen,
+                    ]}
+                    onClose={closeAllPopups}
+                    selectedCard={selectedCard}
+                    cards={cards}
+                  />
+                  <EditAvatarPopup
+                    isOpen={isEditAvatarPopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateAvatar={handleUpdateAvatar}
+                  />
+                  <EditProfilePopup
+                    isOpen={isEditProfilePopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateUser={handleUpdateUser}
+                  />
+                  <AddPlacePopup
+                    isOpen={isAddPlacePopupOpen}
+                    onClose={closeAllPopups}
+                    onAddPlaceSubmit={handleAddPlaceSubmit}
+                  />
+                </>
+              }
+            />
+          </Route>
+        </Routes>
 
-        <Header 
-          signText={"Cerrar sesión"}
-          emailLogin={"danielcanalestaylor@hotmail.com"}
-        />
-        
-        <Main
-          onEditProfileClick={handleEditProfileClick}
-          onAddPlaceClick={handleAddPlaceClick}
-          onEditAvatarClick={handleEditAvatarClick}
-          onConfirmationClick={handleConfirmationClick}
-          onCardClick={handlerCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          isOpen={[
-            isEditProfilePopupOpen,
-            isAddPlacePopupOpen,
-            isEditAvatarPopupOpen,
-            isConfirmationPopupOpen,
-          ]}
-          onClose={closeAllPopups}
-          selectedCard={selectedCard}
-          cards={cards}
-        />
-        
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
-
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          onAddPlaceSubmit={handleAddPlaceSubmit}
-        />
         <Footer />
       </CurrentUserContext.Provider>
     </div>
