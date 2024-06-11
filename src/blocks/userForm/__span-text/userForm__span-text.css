@@ -5,4 +5,11 @@
   line-height: 16.94px;
   text-align: center;
   margin-top: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.userForm__span-text:hover{
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
 }

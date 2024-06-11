@@ -7,6 +7,7 @@ export default function Register() {
       title={"Regístrate"}
       buttonText={"Regístrate"}
       linkSpanText={"¿Ya eres miembro? Inicia sesión aquí"}
+      linkSpan={"/signin"}
     />
   )
 }

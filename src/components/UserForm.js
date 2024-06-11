@@ -32,7 +32,7 @@ export default function UserForm({
         >
           {buttonText}
         </button>
-        <a href={linkSpan} className='userForm__span-text'>{linkSpanText}</a>
+        <Link to={linkSpan} className='userForm__span-text'>{linkSpanText}</Link>
       </form>
       
   )

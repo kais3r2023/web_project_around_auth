@@ -23,7 +23,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [isLogged, setIsLogged] = useState(true); // falta funcion para manejar Login
+  const [isLogged, setIsLogged] = useState(false); // falta funcion para manejar Login
 
   //Llamada de datos de Usuario de la Api
   useEffect(() => {
@@ -165,7 +165,10 @@ function App() {
             path="/signin"
             element={
               <>
-                <Header signText={"Regístrate"} />
+                <Header 
+                signText={"Regístrate"} 
+                routeLink={"/signup"}
+                />
                 <Login />
               </>
             }
@@ -174,7 +177,10 @@ function App() {
             path="/signup"
             element={
               <>
-                <Header signText={"Inicia Sesión"} />
+                <Header 
+                signText={"Inicia Sesión"}
+                routeLink={"/signin"}
+                />
                 <Register />
                 <InfoTooltip
                   shoulBeInfoOpen={false} // hacer funciones para que trabaje el Infotooltip

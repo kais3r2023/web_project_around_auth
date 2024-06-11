@@ -11,6 +11,7 @@ export default function Login({email, password}) {
         title={"Inicia sesión"}
         buttonText={"Inicia sesíon"}
         linkSpanText={"¿Aun no eres miembro? Regístrate aqui"}
+        linkSpan={"/signup"}
       />
     </>
   )
