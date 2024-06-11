@@ -44,3 +44,6 @@
 @import url(./blocks/userForm/__title/userForm__title.css);
 @import url(./blocks/userForm/__submit-btn/userForm__submit-btn.css);
 @import url(./blocks/userForm/__span-text/userForm__span-text.css);
+@import url(./blocks/infoTool/infoTool.css);
+@import url(./blocks/infoTool/__image/infoTool__image.css);
+@import url(./blocks/infoTool/__text/infoTool__text.css);

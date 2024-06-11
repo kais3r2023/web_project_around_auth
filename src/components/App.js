@@ -12,6 +12,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
+import InfoTooltip from "./InfoTooltip";
 
 function App() {
   // Carga de States
@@ -22,7 +23,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true); // falta funcion para manejar Login
 
   //Llamada de datos de Usuario de la Api
   useEffect(() => {
@@ -114,14 +115,14 @@ function App() {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route element={<ProtectedRoute loggedIn={isLogged}/>}>
-            <Route 
+          <Route element={<ProtectedRoute loggedIn={isLogged} />}>
+            <Route
               path="/"
               element={
                 <>
                   <Header
                     signText={"Cerrar sesión"}
-                    emailLogin={"danielcanalestaylor@hotmail.com"}
+                    emailLogin={"danielcanalestaylor@hotmail.com"} // Faltan funciones para manipular datos del Registro
                   />
                   <Main
                     onEditProfileClick={handleEditProfileClick}
@@ -160,6 +161,28 @@ function App() {
               }
             />
           </Route>
+          <Route
+            path="/signin"
+            element={
+              <>
+                <Header signText={"Regístrate"} />
+                <Login />
+              </>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <>
+                <Header signText={"Inicia Sesión"} />
+                <Register />
+                <InfoTooltip
+                  shoulBeInfoOpen={false} // hacer funciones para que trabaje el Infotooltip
+                  isSuccess={true}
+                />
+              </>
+            }
+          />
         </Routes>
 
         <Footer />
