@@ -12,7 +12,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
-import InfoTooltip from "./InfoTooltip";
+
 
 function App() {
   // Carga de States
@@ -182,10 +182,6 @@ function App() {
                 routeLink={"/signin"}
                 />
                 <Register />
-                <InfoTooltip
-                  shoulBeInfoOpen={false} // hacer funciones para que trabaje el Infotooltip
-                  isSuccess={true}
-                />
               </>
             }
           />
