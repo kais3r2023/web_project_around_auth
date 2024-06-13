@@ -18,17 +18,18 @@ export default function Register(
     password: ''
   })
 
+  // funcion para Cerrar Tooltip
   function closeInfoTooltip(){
     setShouldBeInfoOpen(false)
   }
-
+  // Funcion para guardar informacion del formulario
   function handleChange(event){
     const {name, value} = event.target;
     setUserCredentials({
       ...userCredentials, [name]: value }
     )
   }
-
+  // Manipulacion del Submit del formulario
   function handleSubmit(event){
     event.preventDefault();
     auth
