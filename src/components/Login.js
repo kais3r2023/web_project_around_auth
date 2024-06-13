@@ -1,9 +1,11 @@
 import React,{useEffect, useState} from 'react'
 import UserForm from './UserForm'
 import InfoTooltip from './InfoTooltip'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import *as auth from '../utils/auth'
 
-export default function Login() {
+export default function Login({isUserLogged}) {
+  const navigate = useNavigate();
   const location = useLocation();
 
   // States
@@ -27,7 +29,35 @@ export default function Login() {
     }
   },[location.state]);
 
+  // Manipulacion del los valores de los inputs
+  function handleChange(event){
+    const {name, value} = event.target
+    setUserCredentials({
+      ...userCredentials, [name]: value
+    })
+
+  };
+
   //Manipulacion del submit del Formulario
+  function handleSubmit(event){
+    event.preventDefault()
+    if(!userCredentials.email || !userCredentials.password){
+      return (console.log("está mal"));
+    }
+      auth
+        .authorize(userCredentials.email, userCredentials.password)
+        .then((data)=>{
+          if(data.token){
+            setUserCredentials({
+              email: '',
+              password: ''
+            });
+            isUserLogged();
+            navigate('/');
+          }
+        })
+    
+  }
 
   return (
     <>
@@ -36,6 +66,8 @@ export default function Login() {
         buttonText={"Inicia sesíon"}
         linkSpanText={"¿Aun no eres miembro? Regístrate aqui"}
         linkSpan={"/signup"}
+        onSubmit={handleSubmit}
+        handleChange={handleChange}
       />
       <InfoTooltip
         isSuccess={successRegister}

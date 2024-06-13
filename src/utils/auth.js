@@ -31,14 +31,14 @@ export const authorize = (email, password) =>{
     headers: {
       "Content-Type" : "application/json"
     },
-    body :    JSON.stringify({email, password})
+    body :    JSON.stringify({email, password })
  })
-  .then ((res)=>{res.json()})
+  .then ((res)=> {return res.json()})
   .then((data)=>{
     if(data.token){
-      localStorage.setItem('jwt',data.token); //guardar Token en el navegador
-      return data
-    }
+      localStorage.setItem('jwt', data.token); //guardar Token en el navegador
+      return data;
+    } 
   })
   .catch((error)=>{
     return (console.log(`Error: ${error}`)) // Manejo del error
@@ -46,7 +46,7 @@ export const authorize = (email, password) =>{
 };
 
 export const getToken = (token)=>{
-  return fetch(`${baseUrl/users/me}`,{
+  return fetch(`${baseUrl}/users/me`,{
     method: "GET",
     headers: {
       "Content-Type": "aplication/json",

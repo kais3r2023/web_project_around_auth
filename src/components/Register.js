@@ -8,7 +8,7 @@ export default function Register(
 
 ) {
 
-  const navigate = useNavigate
+  const navigate = useNavigate();
 
   // States
   const[successRegister, setSuccessRegister] = useState(false)

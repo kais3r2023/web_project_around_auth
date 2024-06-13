@@ -82,6 +82,11 @@ function App() {
     setIsEditAvatarPopupOpen(false);
   }
 
+  //Funcion para cambiar el estado de la aplicacion a Logueado
+  function handleLogin(){
+    setIsLogged(true)
+  }
+
   // Funcion para controlar los likes y dislikes
   function handleCardLike(card) {
     // verificacion si la tarjeta ha sido dado like
@@ -122,7 +127,7 @@ function App() {
                 <>
                   <Header
                     signText={"Cerrar sesión"}
-                    emailLogin={"danielcanalestaylor@hotmail.com"} // Faltan funciones para manipular datos del Registro
+                    emailLogin={"danielcanalestaylor@hotmail.com"} // Faltan funciones para manipular datos del Login
                   />
                   <Main
                     onEditProfileClick={handleEditProfileClick}
@@ -169,7 +174,9 @@ function App() {
                 signText={"Regístrate"} 
                 routeLink={"/signup"}
                 />
-                <Login />
+                <Login 
+                  isUserLogged={handleLogin}
+                />
               </>
             }
           />
