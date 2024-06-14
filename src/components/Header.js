@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 function Header({
   signText, 
   emailLogin,
-  routeLink
+  routeLink,
+  onClick
 }) {
 
   return (
@@ -13,7 +14,7 @@ function Header({
       <div className='header__container'>
       <img className="header__logo" id="logo-header" alt="logo header" src={logo}/>
       <p className='header__sign'>{emailLogin}</p>
-      <Link to={routeLink} className='header__sign'>{signText}</Link>
+      <Link to={routeLink} className='header__sign' onClick={onClick}>{signText}</Link>
       </div>
       <hr className="header__line"/>
     </header>

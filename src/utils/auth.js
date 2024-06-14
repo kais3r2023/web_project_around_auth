@@ -49,11 +49,11 @@ export const getToken = (token)=>{
   return fetch(`${baseUrl}/users/me`,{
     method: "GET",
     headers: {
-      "Content-Type": "aplication/json",
-      Athorization: `Bearer ${token}`
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
     }
   })
-    .then((res)=>{res.json()})
+    .then((res)=>{return res.json()})
     .then((data)=>{
       return data
     })

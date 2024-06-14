@@ -42,7 +42,7 @@ export default function Login({isUserLogged}) {
   function handleSubmit(event){
     event.preventDefault()
     if(!userCredentials.email || !userCredentials.password){
-      return (console.log("está mal"));
+      return 
     }
       auth
         .authorize(userCredentials.email, userCredentials.password)
@@ -56,6 +56,7 @@ export default function Login({isUserLogged}) {
             navigate('/');
           }
         })
+        .catch((error)=> console.log(error));
     
   }
 
@@ -63,7 +64,7 @@ export default function Login({isUserLogged}) {
     <>
       <UserForm
         title={"Inicia sesión"}
-        buttonText={"Inicia sesíon"}
+        buttonText={"Inicia sesión"}
         linkSpanText={"¿Aun no eres miembro? Regístrate aqui"}
         linkSpan={"/signup"}
         onSubmit={handleSubmit}

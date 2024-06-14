@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -12,6 +12,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
+import *as auth from "../utils/auth"
 
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [isLogged, setIsLogged] = useState(false); // falta funcion para manejar Login
+  const [isLogged, setIsLogged] = useState(false);
+  const [emailUser, setEmailUser] = useState("");
+  const navigate = useNavigate();
 
   //Llamada de datos de Usuario de la Api
   useEffect(() => {
@@ -31,6 +34,37 @@ function App() {
       setCurrentUser(fetchedUser);
     });
   }, []);
+
+  // Funcion que atrapa el Token('jwt') del localStorage 
+
+  useEffect(()=>{
+    if(localStorage.getItem('jwt')){
+      auth 
+        .getToken(localStorage.getItem('jwt'))
+        .then((data)=>{
+            if(data){
+              setIsLogged(true);
+              setEmailUser(data.data.email);
+              navigate('/')
+            } else{
+              navigate('/signup')
+              throw new Error('Token invalido')
+            }
+        })
+        .catch((error)=>{
+          console.log(error);
+          navigate('/signup')
+        })
+    }
+  },[isLogged, navigate]);
+
+  // Funcion de Cerrar sesion
+
+  function signOff(){
+    localStorage.removeItem('jwt')
+    emailUser("")
+    navigate("/signin")
+  }
 
   //Handler states Array de Cards
   useEffect(() => {
@@ -127,7 +161,8 @@ function App() {
                 <>
                   <Header
                     signText={"Cerrar sesión"}
-                    emailLogin={"danielcanalestaylor@hotmail.com"} // Faltan funciones para manipular datos del Login
+                    emailLogin={emailUser}
+                    onClick={signOff}
                   />
                   <Main
                     onEditProfileClick={handleEditProfileClick}
