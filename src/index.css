@@ -37,7 +37,6 @@
 @import url(./blocks/template-zoom/__container/template-zoom__container.css);
 @import url(./blocks/template-zoom/__close-icon/template-zoom__close-icon.css);
 @import url(./blocks/pop-up/__open/pop-up__open.css);
-@import url(./blocks/media-queries/media-queries.css);
 @import url(./blocks/userForm/userForm.css);
 @import url(./blocks/userForm/__input-container/userForm__input-container.css);
 @import url(./blocks/userForm/__input/userForm__input.css);
@@ -47,3 +46,7 @@
 @import url(./blocks/infoTool/infoTool.css);
 @import url(./blocks/infoTool/__image/infoTool__image.css);
 @import url(./blocks/infoTool/__text/infoTool__text.css);
+@import url(./blocks/infoTool/__pop-up/infoTool__pop-up.css);
+@import url(./blocks/infoTool/__btn-close/infoTool__btn-close.css);
+@import url(./blocks/infoTool/__pop-up/__container/infoTool__pop-up__container.css);
+@import url(./blocks/media-queries/media-queries.css);

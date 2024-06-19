@@ -18,6 +18,8 @@ export default function UserForm({
           type="email"
           placeholder="Correo electrónico"
           name="email"
+          maxLength='32'
+          minLength='8'
           onChange={handleChange}
           required
         />
@@ -27,6 +29,8 @@ export default function UserForm({
           placeholder="Contraseña"
           name="password"
           onChange={handleChange}
+          maxLength='30'
+          minLength='8'
           required
         />
       </div>

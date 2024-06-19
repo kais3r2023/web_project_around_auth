@@ -11,7 +11,7 @@
 .photo-link-error,
 .place-title-error {
   margin: 0;
-  width: 358px;
+  width: 80%;
   padding: 10px 0 0;
   margin-bottom: 10px;
   font-family: "Inter";
@@ -20,4 +20,5 @@
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
+  text-align: center;
 }

@@ -44,7 +44,7 @@ function App() {
         .then((data)=>{
             if(data){
               setIsLogged(true);
-              setEmailUser(data.data.email);
+              setEmailUser(data.email);
               navigate('/')
             } else{
               navigate('/signup')
@@ -62,8 +62,7 @@ function App() {
 
   function signOff(){
     localStorage.removeItem('jwt')
-    emailUser("")
-    navigate("/signin")
+    setEmailUser("")    
   }
 
   //Handler states Array de Cards
@@ -163,6 +162,7 @@ function App() {
                     signText={"Cerrar sesión"}
                     emailLogin={emailUser}
                     onClick={signOff}
+                    routeLink={'/signin'}
                   />
                   <Main
                     onEditProfileClick={handleEditProfileClick}

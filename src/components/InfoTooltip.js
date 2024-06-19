@@ -7,9 +7,7 @@ export default function InfoTooltip({
   
   isSuccess, 
   shoulBeInfoOpen, 
-  onClose,
-  id
-
+  onClose
 }) {
 
   const icon = isSuccess ? iconSuccess : iconError;
@@ -20,9 +18,9 @@ export default function InfoTooltip({
 
 
   return (
-    <div id={id}
-    className={`pop-up ${shoulBeInfoOpen ? "pop-up__open" : ""}`}>
-      <div className="pop-up__container">
+    <div
+    className={`infoTool__pop-up ${shoulBeInfoOpen ? "infoTool__pop-up__open" : ""}`}>
+      <div className="infoTool__pop-up__container">
 
       <div className="infoTool">
         <img
@@ -33,8 +31,7 @@ export default function InfoTooltip({
         <p className="infoTool__text">{messagge}</p>
       </div>
       <img
-          className="pop-up__close-icon btn-close"
-          id={`close-icon ${id}`}
+          className="infoTool__btn-close"
           alt="icono de cerrar infoTool"
           src={iconClose}
           onClick={onClose}
